@@ -16,9 +16,9 @@ import { WizardStepComponent } from './wizard-step.component';
       <ng-content></ng-content>
     </div>
     <div class="card-footer" [hidden]="isCompleted">
-        <button type="button" class="btn btn-secondary float-left" (click)="previous()" [hidden]="!hasPrevStep || !activeStep.showPrev">{{previousText}}</button>
-        <button type="button" class="btn btn-secondary float-right" (click)="next()" [disabled]="!activeStep.isValid" [hidden]="!hasNextStep || !activeStep.showNext">{{nextText}}</button>
-        <button type="button" class="btn btn-secondary float-right" (click)="complete()" [disabled]="!activeStep.isValid" [hidden]="hasNextStep">{{doneText}}</button>
+        <button [ngClass]="previousButtonClass" [title]="previousText" type="button" class="float-left" (click)="previous()" [hidden]="!hasPrevStep || !activeStep.showPrev">{{previousText}}</button>
+        <button [ngClass]="nextButtonClass" [title]="nextText" type="button" class="float-right" (click)="next()" [disabled]="!activeStep.isValid" [hidden]="!hasNextStep || !activeStep.showNext">{{nextText}}</button>
+        <button [ngClass]="completeButtonClass" [title]="doneText" type="button" class="float-right" (click)="complete()" [disabled]="!activeStep.isValid" [hidden]="hasNextStep">{{doneText}}</button>
     </div>
   </div>`
   ,
@@ -43,7 +43,9 @@ export class WizardComponent implements AfterContentInit {
   @Input()  previousText = "Anterior";
   @Input()  nextText = "Siguiente";
   @Input()  doneText = "Enviar";
-
+  @Input()  previousButtonClass = 'btn btn-secondary';
+  @Input()  nextButtonClass = 'btn btn-secondary';
+  @Input()  completeButtonClass = 'btn btn-secondary';
 
   @Output()
   onStepChanged: EventEmitter<WizardStepComponent> = new EventEmitter<WizardStepComponent>();
