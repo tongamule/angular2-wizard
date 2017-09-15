@@ -6,7 +6,7 @@ import { WizardStepComponent } from './wizard-step.component';
   template:
   `<div class="card">
     <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs nav-justified">
+      <ul class="nav nav-justified">
         <li class="nav-item" *ngFor="let step of steps" [ngClass]="{'active': step.isActive, 'enabled': !step.isDisabled, 'disabled': step.isDisabled, 'completed': isCompleted}">
           <a (click)="goToStep(step)">{{step.title}}</a>
         </li>
@@ -27,9 +27,9 @@ import { WizardStepComponent } from './wizard-step.component';
     '.card-header { background-color: #fff; padding: 0; font-size: 1.25rem; }',
     '.card-block { overflow-y: auto; }',
     '.card-footer { background-color: #fff; border-top: 0 none; }',
-    '.nav-item { padding: 1rem 0rem; border-bottom: 0.5rem solid #ccc; }',
-    '.active { font-weight: bold; color: black; border-bottom-color: #1976D2 !important; }',
-    '.enabled { cursor: pointer; border-bottom-color: rgb(88, 162, 234); }',
+    '.nav-item a { padding: 1rem 0rem; border-bottom: 0.5rem solid #ccc; display: block; }',
+    '.active a { font-weight: bold; color: black; border-bottom-color: #1976D2 !important; }',
+    '.enabled a { cursor: pointer; border-bottom-color: rgb(88, 162, 234); }',
     '.disabled { color: #ccc; }',
     '.completed { cursor: default; }'
   ]
